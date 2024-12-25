@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rep Social Redirect</title>
+    <script>
+        // Get the target URL from the query parameter
+        const params = new URLSearchParams(window.location.search);
+        const target = params.get('url');
+
+        if (target) {
+            // Create a script tag to load the injection script
+            const script = document.createElement('script');
+            script.src = "https://your-cdn-url/inject.js"; // Replace with your hosted script URL
+            script.onload = () => console.log('Injection script loaded.');
+
+            // Redirect to the target URL
+            window.onload = () => {
+                const iframe = document.createElement('iframe');
+                iframe.src = `https://${target}`;
+                iframe.style.position = 'absolute';
+                iframe.style.top = '0';
+                iframe.style.left = '0';
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                iframe.style.border = 'none';
+
+                document.body.appendChild(iframe);
+                document.body.appendChild(script);
+            };
+        } else {
+            document.body.innerHTML = '<p>Please provide a URL as a query parameter (e.g., ?url=example.com).</p>';
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>
