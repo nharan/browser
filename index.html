@@ -23,7 +23,7 @@
 
                                 // Create and inject the script tag
                                 const script = newWindow.document.createElement('script');
-                                script.src = "https://nharan.github.io/browser/inject.js"; // Replace with your hosted inject.js URL
+                                script.src = "https://nharan.github.io/browser/inject.js"; // Your hosted inject.js file
                                 script.onload = () => console.log('Rep Social script loaded successfully.');
                                 newWindow.document.body.appendChild(script);
                             }
@@ -40,7 +40,8 @@
         }
     </script>
 </head>
-<body onload="openAndInject()">
-    <h1>Redirecting...</h1>
+<body>
+    <h1>Rep Social Demo</h1>
+    <button onclick="openAndInject()">Click to Open and Inject</button>
 </body>
 </html>
